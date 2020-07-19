@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,500&display=swap");
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: rgba(246, 246, 239, 0.9);
+  height: 100vh;
+}
+
+.container {
+  background-color: rgba(246, 246, 239, 0.9);
+  margin: 10px auto;
+  animation: fade-in 1s ease-in-out forwards;
+  position: relative;
+}
+
+.votearrow {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  top: 2px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid gray;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0.1;
+    top: 200px;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.8;
+    top: -10px;
+  }
+
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+/* ============== Table comp ======== */
+
+table {
+  margin-bottom: 0;
+}
+
+thead {
+  background-color: #ff6600;
+  color: floralwhite;
+  font-size: 0.8rem;
+}
+
+table tbody tr:nth-child(odd) {
+  background-color: white !important;
+  border: none !important;
+}
+
+.news-feed-item {
+  animation: fade-out 1s linear both;
+}
+
+tr td {
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+tr td:last-child {
+  text-align: start;
+}
+
+.news-details-container > * {
+  margin-right: 5px;
+}
+
+.news-details-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.news-details-container a,
+.bracket,
+.news-url {
+  color: #828282;
+}
+
+.news-details-container .btn-hide {
+  cursor: pointer;
+  color: inherit;
+  font-size: small;
+  color: #828282;
+}
+
+.news-details-container .news-url {
+  font-size: small;
+}
+
+.news-details-container .news-author {
+  font-size: small;
+}
+.news-details-container .news-time {
+  font-size: 0.8rem;
+  display: inline-block;
+}
+
+/* ============== Table comp ======== */
+
+/* =========Pageination comp ======== */
+
+.pageination {
+  font-size: 0.8rem;
+  text-align: end;
+  color: #ff6600;
+}
+
+.pageination-btn .prev-btn,
+.next-btn {
+  color: #ff6600;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.prev-btn-hide {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* =========Pageination comp ======== */
+
+/* =========LineChart comp ======== */
+#chart {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: -4px -1px 12px 0px rgba(0, 0, 0, 0.34);
+  margin: 1.2rem 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#chart > p {
+  padding: 0;
+  margin: 0 auto;
+  font-size: 0.7rem;
+}
+.hr-line {
+  border: 2px solid #ff6600;
+  margin: 5px 0;
+}
+/* =========LineChart comp ======== */
+
+@media only screen and (max-width: 460px) {
+  thead {
+    font-size: 0.7rem;
+  }
+
+  tr td {
+    font-size: 0.7rem;
+  }
+}
