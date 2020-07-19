@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Table, Container } from "react-bootstrap";
+import { Table, Container, Spinner } from "react-bootstrap";
 import { connect } from "react-redux";
 import { fetchData, hideNewsFeed } from "../redux/actions/fetchDataActions";
 import Row from "./Row";
@@ -61,11 +61,13 @@ const HackerNewsFeedTable = ({ news_feeds, fetchData, hideNewsFeed }) => {
           </tr>
         </thead>
         <tbody className='news-feeds-conatiner'>
-          {hn_feeds.length > 0
-            ? hn_feeds.map((item, i) => {
-                return <Row key={i} item={item} hideNews={hideNews} />;
-              })
-            : null}
+          {hn_feeds.length > 0 ? (
+            hn_feeds.map((item, i) => {
+              return <Row key={i} item={item} hideNews={hideNews} />;
+            })
+          ) : (
+            <p style={{ textAlign: "center" }}>Loading...</p>
+          )}
         </tbody>
       </Table>
       <Pageination prevPage={prevPage} nextPage={nextPage} page={page.end} />
