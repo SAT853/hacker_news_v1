@@ -1,2 +1,4 @@
 export const FETCH_DATE = "FETCH_DATE";
+export const IS_DATA_LOADING = "IS_DATA_LOADING";
+
 export const VOTE_COUNT_INCREMENT = "VOTE_COUNT_INCREMENT";

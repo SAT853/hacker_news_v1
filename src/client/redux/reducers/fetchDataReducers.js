@@ -1,7 +1,8 @@
-import { FETCH_DATE } from "../actions/type";
+import { FETCH_DATE, IS_DATA_LOADING } from "../actions/type";
 
 const initialState = {
   hn_feeds: "",
+  isDataLoading: true,
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -10,8 +11,14 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         hn_feeds: payload,
+        isDataLoading: true,
       };
     }
+    case IS_DATA_LOADING:
+      return {
+        ...state,
+        isDataLoading: false,
+      };
     default:
       return state;
   }

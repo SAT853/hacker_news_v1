@@ -1,11 +1,17 @@
-import { FETCH_DATE, VOTE_COUNT_INCREMENT } from "./type";
+import { FETCH_DATE, VOTE_COUNT_INCREMENT, IS_DATA_LOADING } from "./type";
 import moment from "moment";
 import axios from "axios";
-
+import "regenerator-runtime/runtime";
 export const dispatchNewsFeed = (data) => {
   return {
     type: FETCH_DATE,
     payload: data,
+  };
+};
+
+export const isDataLoading = () => {
+  return {
+    type: IS_DATA_LOADING,
   };
 };
 
@@ -51,6 +57,7 @@ export const fetchData = (start = 1, end = 20) => async (dispatch) => {
       })
       .catch((err) => {});
   }
+  dispatch(isDataLoading());
 };
 
 export const dispatchVoteCount = (count) => {
