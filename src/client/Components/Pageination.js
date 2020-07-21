@@ -5,7 +5,6 @@ const Pageination = ({ prevPage, nextPage, page }) => {
     <div className='pageination'>
       <div className='pageination-btn'>
         <span
-          // className='prev-btn'
           className={page > 22 ? "prev-btn" : "prev-btn-hide"}
           onClick={prevPage}
         >

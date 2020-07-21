@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Table, Container, Spinner } from "react-bootstrap";
+import React, { useEffect, useState, useCallback } from "react";
+import { Table, Container } from "react-bootstrap";
 import { connect } from "react-redux";
 import { fetchData, hideNewsFeed } from "../redux/actions/fetchDataActions";
 import Row from "./Row";
@@ -8,7 +8,7 @@ import VoteCountLineChart from "./VoteCountLineChart";
 import Loader from "./Loader";
 
 const HackerNewsFeedTable = ({ news_feeds, fetchData, hideNewsFeed }) => {
-  const { hn_feeds } = news_feeds;
+  const { hn_feeds, isDataLoading } = news_feeds;
   const data = JSON.parse(JSON.stringify(news_feeds)).hn_feeds;
 
   const [page, setpage] = useState({
@@ -18,6 +18,7 @@ const HackerNewsFeedTable = ({ news_feeds, fetchData, hideNewsFeed }) => {
 
   useEffect(() => {
     fetchData();
+
     return () => {
       fetchData();
     };
@@ -61,16 +62,16 @@ const HackerNewsFeedTable = ({ news_feeds, fetchData, hideNewsFeed }) => {
           </tr>
         </thead>
         <tbody className='news-feeds-conatiner'>
-          {hn_feeds.length > 0 ? (
-            hn_feeds.map((item, i) => {
-              return <Row key={i} item={item} hideNews={hideNews} />;
-            })
-          ) : (
-            <p style={{ textAlign: "center" }}>Loading...</p>
-          )}
+          {hn_feeds.length > 0
+            ? hn_feeds.map((item, i) => {
+                return <Row key={i} item={item} hideNews={hideNews} />;
+              })
+            : null}
         </tbody>
       </Table>
-      <Pageination prevPage={prevPage} nextPage={nextPage} page={page.end} />
+      {!isDataLoading ? (
+        <Pageination prevPage={prevPage} nextPage={nextPage} page={page.end} />
+      ) : null}
       <div className='hr-line'></div>
       <VoteCountLineChart news={data} />
       <div className='hr-line'></div>
