@@ -3,7 +3,7 @@ const path = require("path");
 module.exports = {
   target: "web",
   mode: "development",
-  entry: "./src/client/index.js",
+  entry: ["@babel/polyfill", "./src/client/index.js"],
   output: {
     path: path.resolve(__dirname, "build/public"),
     filename: "client_build.js",
@@ -12,7 +12,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         loader: "babel-loader",
         exclude: "/node_modules/",
         options: {
@@ -27,7 +27,10 @@ module.exports = {
             ],
             "@babel/preset-react",
           ],
-          plugins: ["@babel/plugin-proposal-class-properties"],
+          plugins: [
+            "@babel/plugin-proposal-class-properties",
+            "@babel/plugin-transform-regenerator",
+          ],
         },
       },
       {
